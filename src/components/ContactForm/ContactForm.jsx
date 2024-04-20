@@ -2,7 +2,8 @@ import css from "./ContactForm.module.css";
 import { Formik, Form, Field, ErrorMessage } from "formik"; // Для того щоб відобразити користувачу помилки валідації, використовується компонент ErrorMessage.
 import { useId } from "react";
 import * as Yup from "yup"; //імпорт бібліотеки валідації в компонент форми.
-import { v4 as uuidv4 } from "uuid";
+// import { v4 as uuidv4 } from "uuid";
+import { nanoid } from "nanoid";
 
 const initialValues = {
   Name: "",
@@ -11,7 +12,7 @@ const initialValues = {
 
 const FeedbackForm = ({ onAddContact }) => {
   const nameFieldId = useId(); //хук useId для створення унікальних ідентифікаторів полів.
-  const numberFieldId = useId();
+  const numberFieldId = nanoid();
   const FeedbackSchema = Yup.object().shape({
     Name: Yup.string()
       .trim() //Yup.string(), Yup.min(), Yup.max(), Yup.required() - валідатори,
@@ -25,7 +26,7 @@ const FeedbackForm = ({ onAddContact }) => {
   // При відправці форми викликається колбек-функція
   const handleSubmit = (values, actions) => {
     const newContact = {
-      id: uuidv4(),
+      id: nanoid(),
       name: values.Name,
       number: values.Number,
     };
