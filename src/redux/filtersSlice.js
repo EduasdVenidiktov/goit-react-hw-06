@@ -17,8 +17,7 @@ export const { setStatusFilter } = filtersSlice.actions;
 
 export const selectNameFilter = (state) => {
   const searchTerm = state.filters.searchTerm.toLowerCase();
-  // const contacts = state.contacts.items;
-  const contacts = selectContacts(state); // Использование селектора для получения списка контактов
+  const contacts = selectContacts(state); // Використання селектора для отриманя списку контактів
 
   return contacts.filter((contact) =>
     contact.name.toLowerCase().includes(searchTerm)
@@ -26,23 +25,3 @@ export const selectNameFilter = (state) => {
 };
 
 export default filtersSlice.reducer;
-//=====================================================================
-// import { createSlice } from "@reduxjs/toolkit";
-
-// const filtersSlice = createSlice({
-//   name: "filters",
-//   initialState: {
-//     name: "",
-//   },
-//   reducers: {
-//     setStatusFilter(state, action) {
-//       state.name = action.payload;
-//     },
-//   },
-// });
-
-// export const { setStatusFilter } = filtersSlice.actions;
-
-// export const selectNameFilter = (state) => state.filters.name;
-
-// export default filtersSlice.reducer;
