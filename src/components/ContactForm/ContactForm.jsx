@@ -4,13 +4,16 @@ import { useId } from "react";
 import * as Yup from "yup"; //імпорт бібліотеки валідації в компонент форми.
 // import { v4 as uuidv4 } from "uuid";
 import { nanoid } from "nanoid";
+import { addContact } from "../../redux/contactsSlice.js";
+import { useDispatch } from "react-redux";
 
 const initialValues = {
   Name: "",
   Number: "",
 };
 
-const FeedbackForm = ({ onAddContact }) => {
+const ContactForm = () => {
+  const dispatch = useDispatch();
   const nameFieldId = useId(); //хук useId для створення унікальних ідентифікаторів полів.
   const numberFieldId = nanoid();
   const FeedbackSchema = Yup.object().shape({
@@ -30,7 +33,7 @@ const FeedbackForm = ({ onAddContact }) => {
       name: values.Name,
       number: values.Number,
     };
-    onAddContact(newContact); // Додаємо новий контакт до списку або передаємо його до батьківського компонента
+    dispatch(addContact(newContact)); // Додаємо новий контакт до списку або передаємо його до батьківського компонента
 
     actions.resetForm(); //метод resetForm для очищення полів форми після відправки.
   };
@@ -72,4 +75,4 @@ const FeedbackForm = ({ onAddContact }) => {
   );
 };
 
-export default FeedbackForm;
+export default ContactForm;
