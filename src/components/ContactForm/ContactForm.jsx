@@ -66,7 +66,6 @@ const ContactForm = () => {
           />
           <ErrorMessage name="Number" component="p" className={css.errorMess} />
         </div>
-
         <button className={css.btnAdd} type="submit">
           Add contact
         </button>

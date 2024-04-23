@@ -10,10 +10,14 @@ const filtersSlice = createSlice({
     setStatusFilter(state, action) {
       state.searchTerm = action.payload;
     },
+    changeFilter(state, action) {
+      // Додаємо поле changeFilter
+      state.searchTerm = action.payload;
+    },
   },
 });
 
-export const { setStatusFilter } = filtersSlice.actions;
+export const { setStatusFilter, changeFilter } = filtersSlice.actions;
 
 export const selectNameFilter = (state) => {
   const searchTerm = state.filters.searchTerm.toLowerCase();

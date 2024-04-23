@@ -1,9 +1,9 @@
-import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setStatusFilter } from "../../redux/filtersSlice";
 import css from "./SearchBox.module.css";
+import { useState } from "react";
 
-export default function SearchBar() {
+export default function SearchBox() {
   const [inputValue, setInputValue] = useState("");
   const dispatch = useDispatch();
 
@@ -21,6 +21,7 @@ export default function SearchBar() {
         type="text"
         value={inputValue}
         onChange={handleInputChange}
+        placeholder="Enter contact..."
       />
     </div>
   );
