@@ -4,15 +4,15 @@ import { selectContacts } from "./contactsSlice";
 const filtersSlice = createSlice({
   name: "filters",
   initialState: {
-    searchTerm: "",
+    searchContact: "",
   },
   reducers: {
     setStatusFilter(state, action) {
-      state.searchTerm = action.payload;
+      state.searchContact = action.payload;
     },
     changeFilter(state, action) {
       // Додаємо поле changeFilter
-      state.searchTerm = action.payload;
+      state.searchContact = action.payload;
     },
   },
 });
@@ -20,11 +20,11 @@ const filtersSlice = createSlice({
 export const { setStatusFilter, changeFilter } = filtersSlice.actions;
 
 export const selectNameFilter = (state) => {
-  const searchTerm = state.filters.searchTerm.toLowerCase();
+  const searchContact = state.filters.searchContact.toLowerCase();
   const contacts = selectContacts(state); // Використання селектора для отриманя списку контактів
 
   return contacts.filter((contact) =>
-    contact.name.toLowerCase().includes(searchTerm)
+    contact.name.toLowerCase().includes(searchContact)
   );
 };
 

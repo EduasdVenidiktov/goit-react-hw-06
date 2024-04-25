@@ -1,11 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage";
-
-const contactsPersistConfig = {
-  key: "contacts",
-  storage,
-};
 
 const contactsSlice = createSlice({
   name: "contacts",
@@ -27,13 +20,7 @@ const contactsSlice = createSlice({
   },
 });
 
-const persistedReducer = persistReducer(
-  contactsPersistConfig,
-  contactsSlice.reducer
-);
-
 export const { addContact, deleteContact } = contactsSlice.actions;
-export const selectContacts = (state) => state.contacts.items;
+export const selectContacts = (state) => state.contacts.items; //отримуємо списко контактів з Redux
 
-// Тепер експортуємо persistedReducer
-export default persistedReducer;
+export default contactsSlice.reducer;

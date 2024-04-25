@@ -6,6 +6,7 @@ import * as Yup from "yup"; //імпорт бібліотеки валідаці
 import { nanoid } from "nanoid";
 import { addContact } from "../../redux/contactsSlice.js";
 import { useDispatch } from "react-redux";
+import CounterContacts from "../Counter/Counter.jsx";
 
 const initialValues = {
   Name: "",
@@ -55,7 +56,6 @@ const ContactForm = () => {
           />
           <ErrorMessage name="Name" component="p" className={css.errorMess} />
         </div>
-
         <div>
           <label htmlFor={numberFieldId}>Number</label>
           <Field
@@ -66,6 +66,7 @@ const ContactForm = () => {
           />
           <ErrorMessage name="Number" component="p" className={css.errorMess} />
         </div>
+        <CounterContacts />
         <button className={css.btnAdd} type="submit">
           Add contact
         </button>
