@@ -21,6 +21,7 @@ export const { setStatusFilter, changeFilter } = filtersSlice.actions;
 
 export const selectNameFilter = (state) => {
   const searchContact = state.filters.searchContact.toLowerCase();
+  // console.log("searchContact:", searchContact);
   const contacts = selectContacts(state); // Використання селектора для отриманя списку контактів
 
   return contacts.filter((contact) =>

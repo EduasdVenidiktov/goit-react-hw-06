@@ -13,7 +13,6 @@ import { selectContacts } from "./redux/contactsSlice";
 export default function App() {
   const [searchTerm, setSearchTerm] = useState("");
   useDispatch();
-  // const contacts = useSelector((state) => state.contacts.items);
   const contacts = useSelector(selectContacts);
   const filteredContacts = useSelector(selectNameFilter);
 
